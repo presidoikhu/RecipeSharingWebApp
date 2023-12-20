@@ -1,0 +1,67 @@
+﻿@model RegisterViewModel
+<div class="container-fluid mt-5">
+
+
+    <form asp-area="admin" asp-controller="dashboard" asp-action="register" method="post" class="user" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <div class="form-group row">
+
+            <div class="col-md-7">
+                <h3>Edit Profile Details</h3>
+
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                           placeholder="First Name" asp-for="FirstName">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName"
+                           placeholder="Last Name" asp-for="LastName">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <input type="password" class="form-control form-control-user"
+                           id="exampleInputPassword" placeholder=" Current Password" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-user"
+                           id="exampleRepeatPassword" placeholder="New Password" asp-for="ConfirmPassword">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="userProfileImage" class="btn btn-info btn-user btn-block">
+                        <i class="fab fa-camera fa-fw"></i> Upload New Profile Picture
+                    </label>
+
+                    <input type="file" style="display:none" class="form-control form-control-user" id="userProfileImage"
+                           placeholder="Upload Profile Picture" asp-for="UserProfilePicture">
+                    <span asp-validation-for="UserProfilePicture" class="text-danger"></span>
+                </div>
+                <input type="submit" value="Edit Account" class="btn btn-primary btn-user btn-block" />
+
+                <hr>
+
+            </div>
+
+
+
+        </div>
+
+        </a>
+    </form>
+    <hr>
+
+
+
+
+</div>

@@ -1,0 +1,26 @@
+﻿@model Recipe
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    
+
+    <div class="row">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <form asp-controller="dashboard" asp-action="DeleteRecipe" method="post" class="user" enctype="multipart/form-data">
+                <div class="form-group category">
+                    <label for="category_description" class="text-danger"> Delete Recipe </label>
+                </div>
+
+
+
+                <input type="submit" value="Delete Recipe" class="btn btn-danger btn-user btn-block mb-5" />
+            </form>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

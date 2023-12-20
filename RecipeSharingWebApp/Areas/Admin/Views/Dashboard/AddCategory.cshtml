@@ -1,0 +1,56 @@
+﻿@model RecipesSharingWebApp.Areas.Admin.ViewModels.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Category-List";
+}
+
+
+
+   
+@*     <!-- partial -->
+    <div class="container-fluid page-body-wrapper" style="height:700px; width:500px">
+
+        <!-- partial -->
+        <div class="main-panel"  style="height:700px ; width:900px">
+
+            <div class="content-wrapper">
+                <div class="text-center">
+                   
+                </div>
+                <div class="row"> *@
+
+                    <div class="col-md-6 grid-margin stretch-card">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Category form</h4>
+                                <p class="card-description">
+                                    <a href="/admin/dashboard/register">Create a Category!</a>
+                                </p>
+
+                                <div asp-validation-summary="ModelOnly"></div>
+
+                                <form asp-area="admin" asp-controller="dashboard" asp-action="AddCategory" method="post" class="forms-sample">
+                                    <div class="form-group">
+                                        <label for="exampleInputUsername1">Username</label>
+                                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Name" asp-for="Name">
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="category_description">Category Description:</label>
+                                        <textarea id="category_description" class="form-control form-control-user category"
+                                                  asp-for="Description" style="resize:none; height:100px;"></textarea>
+                                    </div>
+
+
+                                    
+
+
+                                    
+                                    <input type="submit" class="btn btn-primary mr-2" value="Add Category" @* class="btn btn-primary btn-user btn-block" *@>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>

@@ -1,0 +1,54 @@
+﻿@model List<RecipeSharingWebApp.Areas.Admin.Models.Favorite>
+@using Microsoft.AspNetCore.Identity
+@using RecipesSharingWebApp.Areas.Admin.Models
+@inject RecipesSharingWebApp.Helpers.UtilityService utilityService
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    var profileImagesRootPath = utilityService.GetProfileImagesRootPath(operationType: false);
+    var userProfileImagePath = profileImagesRootPath + "/";
+}
+<!-- bradcam_area  -->
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Favorited Recipes</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-info">Favorites</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th> Recipe Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    
+
+                        @{
+                            foreach (var recipe in Model)
+                            {
+
+                            <tr>
+                                <td>  <a asp-controller="Home" asp-action="details" asp-route-id="@recipe.RecipeId">@recipe.RecipeTitle</a></td>
+                            </tr>
+                            }
+                        }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

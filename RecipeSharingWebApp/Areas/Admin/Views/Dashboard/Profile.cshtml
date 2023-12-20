@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject RecipesSharingWebApp.Helpers.UtilityService utilityService
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    var profileImagesRootPath = utilityService.GetProfileImagesRootPath(operationType: false);
+    var loggedInUser = await userManager.GetUserAsync(User);
+    var userProfileImagePath = profileImagesRootPath + "/" + loggedInUser?.ProfilePictureUrl;
+}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">My Profile</h1>
+    <div class="row">
+        <div class="col-md-6">
+
+            <img src="@Url.Content(@userProfileImagePath)" alt="" class="img-fluid">
+            <h6 class="text-center mt-2">Profile Image</h6>
+        </div>
+        <div class="col-md-6 mt-5">
+            <div class="profile-Details mt-5 text-dark">
+                <h5 class="mt-5 text-dark"> Firstname:  @loggedInUser.FirstName</h5>
+                <hr>
+                <h5>Lastname:  @loggedInUser.LastName</h5>
+                <hr>
+                <h5>Email:  @loggedInUser.Email </h5>
+                <hr>
+                <h5>User role:</h5>
+                <hr>
+                <div class="text-center">
+                    <a class="small" asp-controller="Dashboard" asp-action="EditProfile">Edit Profile</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

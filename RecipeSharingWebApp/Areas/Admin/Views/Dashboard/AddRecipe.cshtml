@@ -1,0 +1,98 @@
+﻿@model RecipeViewModel
+
+@{
+    ViewData["Title"] = "Add Recipe";
+}
+
+
+
+    <!-- Page Heading -->
+
+
+<div class="container-fluid ">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800 text-center" >Add Recipe</h1>
+
+    <div class="container-scroller d-flex">
+        <!-- partial:../../partials/_sidebar.html -->
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper ">
+
+
+
+
+            <div class="main-panel">
+                <div class="content-wrapper" style="width:900px; height:900px">
+
+
+<div class="row">
+    <div class="col-md-7">
+        <div asp-validation-summary="ModelOnly"></div>
+
+
+        <form asp-area="admin" asp-controller="dashboard" asp-action="addrecipe" method="post" class="user ms-5" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" asp-for="Title" placeholder="Enter Recipe Name" class="form-control form-control-user" />
+                <span asp-validation-for="Title"></span>
+            </div>
+
+            <div class="form-group">
+                <textarea type="text" class="form-control form-control-user" id="exampleInputEmail"
+                          aria-describedby="emailHelp" placeholder="Enter Description here..." asp-for="Description"
+                          style="resize:none; height: 100px; border-radius:10px;"></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="form-group">
+                <textarea type="text" class="form-control form-control-user" id="exampleInputEmail"
+                          aria-describedby="emailHelp" placeholder="Enter Instruction here..." asp-for="Instruction"
+                          style="resize:none; height: 100px; border-radius:10px;"></textarea>
+                <span asp-validation-for="Instruction"></span>
+            </div>
+            <div class="form-group">
+                <input type="text" asp-for="TimeSpan" placeholder="Enter time needs" class="form-control form-control-user" />
+                <span asp-validation-for="TimeSpan"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="userProfileImage" class="btn btn-info btn-user btn-block">
+                    <i class="fab fa-camera fa-fw"></i> Upload Cover Image
+                </label>
+                <input type="file" style="display:none" class="form-control form-control-user"
+                       id="userProfileImage" placeholder="Upload Cover Image" asp-for="CoverImage">
+                <span asp-validation-for="CoverImage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <select asp-for="CategoryId" class="form-control">
+                    <option value="">Select recipe category</option>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId"></span>
+            </div>
+
+            <div class="form-group">
+                <h5>Feature this recipe?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="IsFeatured" value="true"
+                           id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="IsFeatured" value="false"
+                           id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">No</label>
+                </div>
+            </div>
+
+            <input type="hidden" value="@Model.UserId" asp-for="UserId" />
+
+            <input type="submit" value="Add Recipe" class="btn btn-primary btn-user btn-block" />
+        </form>
+    </div>
+</div>
+</div>
+

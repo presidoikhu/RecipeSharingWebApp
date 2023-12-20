@@ -1,0 +1,60 @@
+﻿@model RecipesSharingWebApp.Areas.Admin.Models.Recipe
+@using Microsoft.AspNetCore.Identity
+@using RecipesSharingWebApp.Areas.Admin.Models
+@inject RecipesSharingWebApp.Helpers.UtilityService utilityService
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    var profileImagesRootPath = utilityService.GetProfileImagesRootPath(operationType: false);
+    var userProfileImagePath = profileImagesRootPath + "/";
+}
+
+
+  <!-- bradcam_area  -->
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Recipe Details</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /bradcam_area  -->
+<!-- recepie_area_start  -->
+<div class="recepie_area inc_padding">
+    <div class="container">
+        <div class="row">
+          
+            </div>
+
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="">
+                <div class="recepie_thumb">
+                    <img src="@Url.Content(@userProfileImagePath +  Model.CoverImageUrl)" alt="" class="img-fluid">
+                </div>
+                <h1> Title :  </h1>
+                <p> @Model.Title</p>
+                <h1>Estimated Time : </h1>
+                <p> @Model.TimeSpan</p>
+                <h1> Description :</h1>
+                <p>@Model.Description</p>
+                <h1>Instruction :</h1>
+                <p>@Model.Instruction</p>
+
+
+
+                <a asp-controller="Home" asp-action="Index" class="line_btn">Back</a>
+
+            </div>
+        </div>
+         
+            </div>
+
+
+    
+
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Recipe Sharing Platform - @ViewData["Title"]</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/admin/mycss/style.css" stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    
+        <title>Spica Admin</title>
+        <!-- base:css -->
+        <link rel="stylesheet" href="~/vendors/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="~/vendors/css/vendor.bundle.base.css">
+        <!-- endinject -->
+        <!-- plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="~/css/style.css">
+        <!-- endinject -->
+        <link rel="shortcut icon" href="~/images/favicon.png" />
+    
+</head>
+
+<body>
+
+    <div class="container-scroller d-flex">
+
+    <!-- Navbar -->
+        @await Html.PartialAsync("_Sidebar.cshtml")
+
+
+    <!-- End of Navbar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Sidebar -->
+                @await Html.PartialAsync("_Navbar.cshtml")
+            <!-- End of Sidebar -->
+            <!-- Begin Page Content -->
+            @RenderBody()
+            <!-- /.container-fluid -->
+        </div>
+
+
+                
+
+
+
+    <footer class="footer">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+
+    <!-- base:js -->
+    <script src="~/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <script src="~/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="~/js/off-canvas.js"></script>
+    <script src="~/js/hoverable-collapse.js"></script>
+    <script src="~/js/template.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="~/js/dashboard.js"></script>
+    <!-- End custom js for this page-->
+</body>
+
+</html>

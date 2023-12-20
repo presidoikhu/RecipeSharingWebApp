@@ -1,0 +1,78 @@
+﻿@model RecipesSharingWebApp.Areas.Admin.ViewModels.AdminRecipeViewModel
+
+<style>
+
+</style>
+
+@{
+    ViewData["Title"] = "Recipe";
+}
+
+
+
+
+<div class=" stretch-card">
+    <div class="card">
+        <div class="card-body" >
+            <h4 class="card-title">Recipe Table</h4>
+            <p class="card-description">
+                <button><a asp-controller="Dashboard" asp-action="AddRecipe" class="bg-secondary color-bg-dark">Add Recipe </a></button>
+            </p>
+            <div class="table-responsive" style="width:1000px " >
+                <table class="table table-striped" style="width:1000px;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>TimeSpan</th>
+                            <th>CoverImageUrl</th>
+                            <th>Category</th>
+                            <th>UserId</th>
+                            <th>Isfeatured</th>
+                            <th>Instruction</th>
+                            <th>Description</th>
+                            <th>IsFavorite</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        
+                            @{
+                                foreach (var recipe in Model.Recipes)
+                                {
+                                <tr>
+                                    <td>@recipe.Id</td>
+
+                                    <td>@recipe.Title</td>
+                                    <td>@recipe.TimeSpan</td>
+
+                                    <td>@recipe.CoverImageUrl</td>
+
+                                    <td>@recipe.Category</td>
+                                    <td>@recipe.UserId</td>
+
+                                    <td>@recipe.IsFeatured</td>
+
+                                    <td>@recipe.Instruction</td>
+
+                                    <td>@recipe.Description</td>
+
+                                    <td>@recipe.IsFavorite</td>
+                                    <td><a asp-controller="dashboard" asp-action="deleteRecipe" asp-route-id="@recipe.Id" class="text-danger">Delete</a></td>
+                                    <td><a asp-controller="dashboard" asp-action="EditRecipe" asp-route-id="@recipe.Id" class="text-info"> Edit </a></td>
+                                </tr>
+
+                                }
+                            }
+                        <tr>
+                 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

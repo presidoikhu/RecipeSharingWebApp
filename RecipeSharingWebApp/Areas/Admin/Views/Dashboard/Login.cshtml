@@ -1,0 +1,101 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Spica Admin</title>
+  <!-- base:css -->
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+</head>
+
+<body>
+
+    
+    
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      
+      <!-- partial -->
+      <div class="main-panel">
+                
+        <div class="content-wrapper">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4 ">Welcome Back!</h1>
+                    </div>
+          <div class="row">
+
+            <div class="col-md-6 grid-margin stretch-card" style="margin-left:30%;">
+                           
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Login form</h4>
+                  <p class="card-description">
+                    <a  href="/admin/dashboard/register">Create an Account!</a>
+                  </p>
+
+                      <div asp-validation-summary="ModelOnly"></div>
+
+                                    <form asp-area="admin" asp-controller="dashboard" asp-action="login" method="post" class="forms-sample">
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Username</label>
+                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" asp-for="Username">
+                         <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="Password">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" asp-for="Password">
+                                            <span asp-validation-for="Password"></span>
+                    </div>
+                    
+                    <div class="form-check form-check-flat form-check-primary">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                        Remember me
+                      </label>
+
+                               <input type="hidden" asp-for="ReturnUrl" value="@ViewData["ReturnUrl"]" />
+
+                    </div>
+                       <input type="submit" class="btn btn-primary mr-2"  value="Login" @* class="btn btn-primary btn-user btn-block" *@>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+      
+
+  <!-- container-scroller -->
+  <!-- base:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <!-- endinject -->
+  <!-- plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
