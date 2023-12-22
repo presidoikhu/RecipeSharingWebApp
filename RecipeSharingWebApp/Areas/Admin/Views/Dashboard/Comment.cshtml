@@ -1,0 +1,42 @@
+﻿@model List<RecipesSharingWebApp.Areas.Admin.Models.Comment>;
+
+@{
+    ViewData["Title"] = "Comment-List";
+}
+
+<div class="container-fluid">
+    
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-info">Comments</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th> Name</th>
+                            <th>CommentBody</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @{
+                                foreach (var comment in Model)
+                                {
+                                    <td>@comment.CommentTitle</td>
+                                    <td>@comment.CommentBody</td>
+                                   
+                                }
+                            }
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

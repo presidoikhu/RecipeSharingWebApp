@@ -18,14 +18,13 @@ namespace RecipesSharingWebApp.Areas.Admin.Models
         public string? UserId { get; set; }
         public virtual ApplicationUser? User { get; set; }
        
-        public IEnumerable<Comment> Comments { get; set; }
+        public IEnumerable<Comment> Comments { get; set; } = new List<Comment>();
         public bool? IsFeatured { get; set; }
 
         public bool IsFavorite { get; set; }
 
         public string? Instruction {  get; set; }
 
-        public IEnumerable<Category> Categories { get; set; } = new List
-            <Category> ();
+        public IEnumerable<Category> Categories { get; set; } = new List <Category> ();
     }
 }

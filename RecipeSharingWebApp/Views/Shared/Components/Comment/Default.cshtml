@@ -1,0 +1,31 @@
+﻿@model RecipeSharingWebApp.Areas.Admin.ViewModels.CommentView
+@using Microsoft.AspNetCore.Identity
+@using RecipesSharingWebApp.Areas.Admin.Models;
+@inject UserManager<ApplicationUser> userManager
+@{
+    var loggedInUser = await userManager.GetUserAsync(User);
+    
+}
+
+<div class="modal-body">
+    <div asp-validation-summary="ModelOnly"></div>
+    <form method="post" class="user" id="CommentForm"  asp-controller="Home" asp-action="Comment" >
+        <label for="Comment">Leave a comment</label>
+        <div>
+        <input type="text" asp-for="CommentTitle" class=" mb-3   " style=" margin-left:17px; width:372px" />
+        </div>
+        <div class="form-group col-md-4">
+            <textarea id="comment" class="form-control form-control-user comment"
+                      asp-for="CommentBody" style="resize:none; height:100px;"></textarea>
+        </div>
+
+        <input type="text" asp-for="UserId" value="@loggedInUser.Id" class="btn btn-primary btn-user btn-block col-md-4"
+                style="visibility:hidden" />
+        <input type="text" asp-for="RecipeId" value="@Model.Id" class="btn btn-primary btn-user btn-block col-md-4"
+               style="visibility:hidden" />
+        <input type="text" asp-for="Title" value="@Model.Title" class="btn btn-primary btn-user btn-block col-md-4"
+               style="visibility:hidden" />
+        <input type="submit" value="Add Comment" class="btn btn-primary btn-user btn-block col-md-4"
+               id="submit-btn" />
+    </form>
+</div>

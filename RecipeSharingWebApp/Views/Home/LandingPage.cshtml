@@ -37,7 +37,12 @@
                     <div class="slider_text text-center">
                         <div class="text">
                             <h3>
-                                <button><a asp-area="Admin" asp-controller="Dashboard" asp-action="Login">Register/Login</a></button>
+                                <li>
+                                    <a class="btn btn-success p-2 rounded"  asp-controller="Home" asp-action="Index">
+                                        Logout
+                                    </a>
+                                </li>
+                                Chicken dish with per boiled egg
                             </h3>
                         </div>
                     </div>
@@ -47,7 +52,62 @@
     </div>
 </div>
 <!-- slider_area_end -->
+
+<form asp-area="Home" asp-controller="Home" asp-action="Index" method="post">
+    <div class="form-group col-md-4 col-lg-4 " style="margin-left:35%; margin-top:5%; display:flex">
+        <input type="search" placeholder="Enter Recipe Title" id="searchString" name="searchString" class="form-control" />
+        <button type="submit" class="btn btn-success">Search</button>
+    </div>
+</form>
+
+@if (Model.Results != null)
+{
+    <ul>
+        @foreach (var recipe in Model.Results)
+        {
+            <li style="margin-left:45%">
+                <a asp-controller="Home" asp-action="details" asp-route-id="@recipe.Id">@recipe.Title</a>
+            </li>
+        }
+    </ul>
+}
+
+
+
+
+
+
+
 <!-- recepie_area_start  -->
+<div class="recepie_area">
+    <div class="container">
+        <div class="row">
+            @{
+                foreach (var recipe in Model.Recipes)
+                {
+
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="single_recepie text-center">
+                            <div class="recepie_thumb">
+                                <img src="@Url.Content(@userProfileImagePath +  @recipe.CoverImageUrl)" alt="" class="img-fluid">
+                            </div>
+                            <h3>@recipe.Title</h3>
+                            <span>@recipe.Category</span>
+                            <p>@recipe.TimeSpan</p>
+
+                            <a asp-area="admin" asp-controller="dashboard" asp-action="button_click" asp-route-id="@recipe.Id"><i class="fa fa-heart favorite" id="favoriteButton"></i></a>
+
+
+                            <a asp-controller="Home" asp-action="details" asp-route-id="@recipe.Id" class="line_btn">View Full Recipe</a>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+<button class="btn btn-warning" style="margin-left:45%; margin-bottom:15px"><a asp-controller="Home" asp-action="AddRecipe">Add Recipe</a></button>
 <!-- /recepie_area_start  -->
 <!-- recepie_videos   -->
 <div class="recepie_videoes_area">

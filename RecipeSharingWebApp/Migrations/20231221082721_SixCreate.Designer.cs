@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecipesSharingWebApp.Data;
 
@@ -11,9 +12,11 @@ using RecipesSharingWebApp.Data;
 namespace RecipeSharingWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231221082721_SixCreate")]
+    partial class SixCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,7 +275,7 @@ namespace RecipeSharingWebApp.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8c4dba33-c67d-4985-9ae6-ad2885aa113c",
+                            ConcurrencyStamp = "720717b2-d741-4e4b-8b0c-ec07abdd015e",
                             Email = "james@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "James",
@@ -280,10 +283,10 @@ namespace RecipeSharingWebApp.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "JAMES@GMAIL.COM",
                             NormalizedUserName = "JAMES@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECW98FO6XDzBqFVmRrRTBa17LPTZZEN+XuX59kqy/8TsQGyyExE7H9DlOx1dJ5v7iQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPnjBsgjxMpDI3NYTtiQU8AOlJoowuPv/F0ohZz+6cvCgElqyEP3oyVzpy3EBXN4Ag==",
                             PhoneNumberConfirmed = false,
                             ProfilePictureUrl = "",
-                            SecurityStamp = "ebf291ba-a1c1-4fa9-8924-fe4b36d8ecc5",
+                            SecurityStamp = "f73a3096-fb19-4903-8eee-63066bfdba2e",
                             TwoFactorEnabled = false,
                             UserName = "james@gmail.com",
                             UserRoleId = "1"
@@ -333,9 +336,6 @@ namespace RecipeSharingWebApp.Migrations
 
                     b.Property<string>("CommentId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CommentTitle")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");

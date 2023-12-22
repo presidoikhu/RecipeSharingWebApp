@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecipesSharingWebApp.Areas.Admin.Models;
@@ -19,22 +20,24 @@ namespace RecipesSharingPlatform.Controllers
         private readonly IUserService _userService;
         private readonly ApplicationDbContext _dbContext;
         private readonly UtilityService _utilityService;
-        private readonly IRecipeService _recipeService; 
+        private readonly IRecipeService _recipeService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(ApplicationDbContext dbContext, UtilityService utilityService, IRecipeService recipeService)
-
+        public HomeController(ApplicationDbContext dbContext, UtilityService utilityService, IRecipeService recipeService, UserManager<ApplicationUser> userManager)
         {
-           
+            _userManager = userManager;
             _dbContext = dbContext;
             _utilityService = utilityService;
             _recipeService = recipeService;
         }
 
+       
+
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> LandingPage()
         {
             var recipes = _dbContext.Recipes;
-            var r = recipes.ToList().Take(3);
+            var r = recipes.ToList();
             var recipe = new RecipeMainViewModel
             {
                 Recipes = r,
@@ -42,6 +45,10 @@ namespace RecipesSharingPlatform.Controllers
             return View(recipe);
         }
 
+        public async Task<IActionResult> Index()
+        {
+            return View();
+        }
         public IActionResult about()
         {
             return View();
@@ -59,11 +66,21 @@ namespace RecipesSharingPlatform.Controllers
         public IActionResult details(string id)
         {
             var rcipe = _dbContext.Recipes;
+            var comments = _dbContext.Comments;
             var recipe = rcipe.FirstOrDefault(x => x.Id == id);            
+            var comm = comments.Where(x => x.RecipeId == id).ToList();
+            recipe.Comments = comm;
             return View(recipe);
         }
 
-        
+        public async Task<IActionResult> Comment(Comment model)
+        {
+            _dbContext.Comments.Add(model);
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction("details", "Home", new { Area = "", id = model.RecipeId });
+        }
+
+
 
 
         public IActionResult contact()
@@ -79,6 +96,9 @@ namespace RecipesSharingPlatform.Controllers
             var rec = new RecipeMainViewModel { Recipes = recipes };
             return View(rec);
         }
+
+
+        [Authorize]
         public IActionResult Favorites(string id)
         {
             var fav = _dbContext.Favorites;

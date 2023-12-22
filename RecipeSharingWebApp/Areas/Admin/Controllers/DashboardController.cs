@@ -11,6 +11,7 @@ using RecipesSharingWebApp.Services;
 using System.Security.Claims;
 using RecipeSharingWebApp.Areas.Admin.Models;
 using Microsoft.AspNetCore.Identity;
+using RecipeSharingWebApp.Areas.Admin.ViewModels;
 
 namespace RecipesSharingWebApp.Areas.Admin.Controllers
 {
@@ -62,7 +63,7 @@ namespace RecipesSharingWebApp.Areas.Admin.Controllers
                if (result)
                 {
                     //return LocalRedirect(returnUrl);
-                    return RedirectToAction("index", "home", new {Area = ""});
+                    return RedirectToAction("LandingPage", "home", new {Area = ""});
                 }
                else
                 {
@@ -200,10 +201,12 @@ namespace RecipesSharingWebApp.Areas.Admin.Controllers
             }
             return View(model);
         }
-        public async Task<IActionResult> Comment()
 
+        public IActionResult Comment()
         {
-            return View();
+            var comments = _dbContext.Comments.ToList();
+            return View(comments);
+
         }
         public async Task<IActionResult> Profile()
 
